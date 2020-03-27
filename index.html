@@ -5,28 +5,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Vue.js</title>
+  <title>Done</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+
   
   <!-- Vue.js -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
   <link rel="stylesheet" href="./style.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="animate.css" type="text/css" media="all" />
 </head>
 
 <body>
   <div id="vue-app">
-    <form accept-charset="utf-8">
+    <form accept-charset="utf-8" class="animated bounce">
       <label for="to-do">Todo</label>
       <input type="text" name="todo" id="todo" value="" />
       <p v-on:click="addTodo" id="addBt">Add</p>
     </form>
+
     <div class="todosContainer">
-      <div class="todo" :key="todo" v-for="todo in todos">
+     <transition-group name="slideIn" enter-active-class="animated lightSpeedIn">
+      <div :key="todo" v-for="todo in todos" class="todo">
         <p class="todoName">{{todo}}</p>
         <div class="checker">
-          
         </div>
       </div>
+     </transition-group>
     </div>
+
 </div>
   <!-- Project -->
   <script src="app.js"></script>
