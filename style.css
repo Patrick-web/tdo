@@ -50,7 +50,7 @@ label{
   background: #8E24AA;
   transform: scale(2)
 }
-#addBt{
+.bt{
   background: #8E24AA;
   padding: 5px;
   font-size: 1.2em;
@@ -61,6 +61,23 @@ label{
   margin-top: 10px;
   text-align: center;
   color: white;
+  transition: 0.2s ease;
+}
+#editBt{
+  transform: scaleY(0);
+  display: none;
+}
+#addBt{
+  transform: scaleY(1);
+  display: block;
+}
+.editMode #editBt{
+  transform: scaleY(1);
+  display: block;
+}
+.editMode #addBt{
+  transform: scaleY(0);
+  display: none;
 }
 .todo{
   background: white;

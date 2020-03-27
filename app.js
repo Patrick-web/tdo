@@ -2,7 +2,8 @@ var study = new Vue({
   el: "#vue-app",
   data: {
     heading: "Vue.js",
-    todos:[]
+    todos:[],
+    target:null
   },
   methods:{
     addTodo(){ 
@@ -12,12 +13,34 @@ var study = new Vue({
         todo: todo.value,
         isDone:false
       }
-      this.todos.unshift(newTodo);
+      if(todo.value!=''){
+        this.todos.unshift(newTodo);
+      }
       todo.value=''
-      console.log(this.todos)
     },
     deleteTodo(index){
       this.todos.splice(index,1);
+    },
+    editTodo(index){
+      this.target = index
+      const input = document.querySelector("#todo")
+      input.value = this.todos[index].todo
+      document.querySelector('.form').classList.add('editMode')
+      document.querySelector('#todo').focus()
+    },
+    saveEdit(){
+      const editedTodo = document.querySelector("#todo");
+      this.todos[this.target].todo = editedTodo.value;
+      editedTodo.value='';
+      document.querySelector('.editMode').classList.remove('editMode')
+      document.querySelector('.showActions').classList.remove('showActions')
+    },
+    addOrEdit(){
+      if(document.querySelector('.form').classList.contains('editMode')){
+        this.saveEdit()
+      }else{
+        this.addTodo()
+      }
     },
     markAsDone(id){
       const targetID= this.todos.map(todo=>todo.id).indexOf(id)
@@ -25,16 +48,17 @@ var study = new Vue({
       console.log(this.todos[targetID].isDone)
     },
     showActions(e){
-      console.log(e.target)
       let todo;
       if(e.target.classList.contains('todo')){
         todo = e.target; 
+        todo.classList.toggle('showActions')
+
       }else if(e.target.classList.contains('todoName')){
         todo=e.target.parentElement;      
-        
+        todo.classList.toggle('showActions')
+
       }
-      
-      todo.classList.toggle('showActions')
+
     }
   }
 });

@@ -18,19 +18,20 @@
   <div id="vue-app">
     <div class="form" accept-charset="utf-8" class="animated bounce">
       <label for="to-do">Todo</label>
-      <input  v-on:keyup.enter="addTodo"  type="text" name="todo" id="todo" value="" />
-      <p v-on:click="addTodo" id="addBt">Add</p>
+      <input  v-on:keyup.enter="addOrEdit"  type="text" name="todo" id="todo" value="" />
+      <p v-on:click="addTodo" id="addBt" class="bt">Add</p>
+      <p id="editBt" id="editBtn" v-on:click="saveEdit" class="bt">Save Edit</p>
     </div>
 
     <div class="todosContainer">
-     <transition-group name="slideIn" enter-active-class="animated faster lightSpeedIn">
+     <transition-group name="slideIn" enter-active-class="animated faster lightSpeedIn" leave-active-class="animated fast hinge">
       <div :key="todo" v-on:click.stop=showActions($event) v-for="(todo,index) in todos" class="todo">
         <p class="id">{{todo.id}}</p>
         <p class="todoName">{{todo.todo}}</p>
         <div v-on:click="markAsDone(todo.id)" v-bind:class="{completed:todo.isDone}" id="checker">
         </div>
         <div class="actions">
-          <img class="icon" v-on:click="editTodo(index)" id="editBt" src="./Assets/pen.svg" alt="" />
+          <img class="icon" v-on:click="editTodo(index)" id="editI" src="./Assets/pen.svg" alt="" />
           <img class="icon" v-on:click="deleteTodo(index)" id="delBt" src="./Assets/delete.svg" alt="" />
         </div>
       </div>
