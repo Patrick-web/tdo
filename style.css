@@ -1,0 +1,76 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+body{
+  background: #EDE7F6;
+}
+input{
+  display: block;
+  padding: 5px;
+  font-size: 1.2em;
+  outline: none;
+  border: none;
+  border-bottom: 0.5px solid #757575;
+  margin-left: 5px;
+  background: #EEEEEE;
+  width: 96%;
+  margin-top: 5px;
+}
+label{
+  font-size: 1.2em;
+  margin-left: 5px;
+
+}
+form{
+  margin: 10px;
+  padding: 5px;
+  padding-bottom:10px;
+  background: white;
+  box-shadow: 2px 2px 5px #BDBDBD;
+  border-radius:10px;
+  min-height: 100px;
+  position: relative
+}
+.checker{
+  width: 25px;
+  height: 25px;
+  border: 2px solid #8E24AA;
+  border-radius:100%;
+  transition: 0.2s ease-out;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top:50%;
+  transform: translateY(-50%)
+}
+.done .checker{
+  border-radius: 5%;
+  background: purple;
+}
+#addBt{
+  background: #8E24AA;
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+  border-radius: 3px;
+  width: 98%;
+  margin:auto;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+.todo{
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  font-size: 1.2em;
+  box-shadow: 2px 2px 5px #9E9E9E;
+  min-height: 60px;
+  align-items: center;
+
+}
